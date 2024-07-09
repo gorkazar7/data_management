@@ -1,21 +1,7 @@
 steps:
-  # Step 1: Build the Docker images
   - name: 'gcr.io/cloud-builders/docker:latest'
-    args: ['build', '--network=cloudbuild', '-t', 'europe-west1-docker.pkg.dev/$PROJECT_ID/docker-repository/${TARGET_IMAGE_URI}', '.']
+    args: ['build','--network=cloudbuild', '-t', 'europe-west1-docker.pkg.dev/$_PROJECT_ID/docker-repository/${_TARGET_IMAGE_URI}', '.']
     dir: 'custom_serving_container/PT'
-    id: 'Build Docker image'
 
-  # Step 2: Push the Docker image to Google Container Registry (GCR)
-  - name: 'gcr.io/cloud-builders/docker:latest'
-    args: ['push', 'europe-west1-docker.pkg.dev/$PROJECT_ID/docker-repository/${TARGET_IMAGE_URI}']
-    id: 'Push Docker image to GCR'
-
-  # Step 3: Deploy the Docker image to Google Cloud Run
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:latest'
-    entrypoint: 'gcloud'
-    args: ['run', 'deploy', '${TARGET_IMAGE_URI}', '--image', 'europe-west1-docker.pkg.dev/$PROJECT_ID/docker-repository/${TARGET_IMAGE_URI}', '--region', 'europe-west1', '--platform', 'managed']
-    id: 'Deploy to Cloud Run'
-
-images:
-  - 'europe-west1-docker.pkg.dev/$PROJECT_ID/docker-repository/${TARGET_IMAGE_URI}'
+images: ['europe-west1-docker.pkg.dev/$_PROJECT_ID/docker-repository/${_TARGET_IMAGE_URI}']
 timeout: 3600s
