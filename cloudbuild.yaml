@@ -1,5 +1,5 @@
 steps:
-  # Step 1: Build the Docker image
+  # Step 1: Build the Docker images
   - name: 'gcr.io/cloud-builders/docker:latest'
     args: ['build', '--network=cloudbuild', '-t', 'europe-west1-docker.pkg.dev/$PROJECT_ID/docker-repository/${TARGET_IMAGE_URI}', '.']
     dir: 'custom_serving_container/PT'
