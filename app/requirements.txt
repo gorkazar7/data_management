@@ -1,0 +1,5 @@
+google-cloud-storage==2.16.0
+cloud-sql-python-connector==1.9.2
+SQLAlchemy==2.0.30
+omegaconf==2.3.0
+pg8000==1.31.2

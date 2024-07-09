@@ -1,0 +1,22 @@
+storage:
+  buckets:
+      raw: divec-raw-data-1b8d
+  roles:
+    bucket_level: roles/storage.objectAdmin
+
+db:
+  instance_connection_name: bigdata-renault:europe-west1:divec-postgresql-ec51
+  name: postgres
+  schema: divec
+  user: postgres
+  password: 7+n"g9r@LInnQyt0
+gcp:
+  location: 'EUROPE-WEST1'
+
+users:
+  renault:
+    admin:
+      - renault.divec@gmail.com
+    editor:
+      - renault.data.divec@gmail.com
+
