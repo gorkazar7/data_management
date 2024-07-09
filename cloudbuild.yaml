@@ -1,13 +1,13 @@
 steps:
   # Paso 1: Construir la imagen Docker
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/my-image', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/data-management', '.']
     id: 'Build Docker image'
     timeout: 30m
 
   # Paso 2: Empujar la imagen al Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/my-image']
+    args: ['push', 'gcr.io/$PROJECT_ID/data-management']
     id: 'Push Docker image'
     timeout: 10m
 
@@ -19,7 +19,7 @@ steps:
       - 'deploy'
       - 'my-service'  # Nombre del servicio en Cloud Run
       - '--image'
-      - 'gcr.io/$PROJECT_ID/my-image'
+      - 'gcr.io/$PROJECT_ID/data-management'
       - '--region'
       - 'us-central1'  # Cambia la región según tus necesidades
       - '--platform'
@@ -29,7 +29,7 @@ steps:
     timeout: 10m
 
 images:
-  - 'gcr.io/$PROJECT_ID/my-image'
+  - 'gcr.io/$PROJECT_ID/data-management'
 
 options:
   logging: CLOUD_LOGGING_ONLY
