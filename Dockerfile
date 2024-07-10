@@ -7,6 +7,7 @@ WORKDIR /app
 COPY ./app /app
 
 RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install fastapi uvicorn
 
 # Expose the port on which the app will run in cloud
 EXPOSE 8080
